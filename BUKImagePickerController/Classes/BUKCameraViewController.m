@@ -76,7 +76,7 @@ static NSString *const kBUKCameraViewControllerCellIdentifier = @"cell";
         _flashModeButton = [[UIButton alloc] init];
         _flashModeButton.translatesAutoresizingMaskIntoConstraints = NO;
         _flashModeButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
-        [_flashModeButton setImage:[UIImage buk_bundleImageNamed:@"flash-button"] forState:UIControlStateNormal];
+        [_flashModeButton setImage:[UIImage buk_bundleImageNamed:@"flash-off"] forState:UIControlStateNormal];
         [_flashModeButton addTarget:self action:@selector(toggleFlashMode:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _flashModeButton;
@@ -190,13 +190,13 @@ static NSString *const kBUKCameraViewControllerCellIdentifier = @"cell";
     NSString *title;
     switch (flashMode) {
         case FastttCameraFlashModeAuto:
-            title = BUKImagePickerLocalizedString(@"Flash Auto", nil);
+            title = @"";// BUKImagePickerLocalizedString(@"Flash Auto", nil);
             break;
         case FastttCameraFlashModeOn:
-            title = BUKImagePickerLocalizedString(@"Flash On", nil);
+            title = @"";//BUKImagePickerLocalizedString(@"Flash On", nil);
             break;
         case FastttCameraFlashModeOff:
-            title = BUKImagePickerLocalizedString(@"Flash Off", nil);
+            title = @"";//BUKImagePickerLocalizedString(@"Flash Off", nil);
             break;
     }
     
@@ -339,17 +339,20 @@ static NSString *const kBUKCameraViewControllerCellIdentifier = @"cell";
 }
 
 
-- (void)toggleFlashMode:(id)sender {
+- (void)toggleFlashMode:(UIButton*)sender {
     FastttCameraFlashMode flashMode;
     switch (self.flashMode) {
         case FastttCameraFlashModeAuto:
             flashMode = FastttCameraFlashModeOn;
+            [sender setImage:[UIImage buk_bundleImageNamed:@"flash-on"] forState:UIControlStateNormal];
             break;
         case FastttCameraFlashModeOn:
             flashMode = FastttCameraFlashModeOff;
+            [sender setImage:[UIImage buk_bundleImageNamed:@"flash-off"] forState:UIControlStateNormal];
             break;
         case FastttCameraFlashModeOff:
             flashMode = FastttCameraFlashModeAuto;
+            [sender setImage:[UIImage buk_bundleImageNamed:@"flash-auto"] forState:UIControlStateNormal];
             break;
     }
     
@@ -640,7 +643,7 @@ static NSString *const kBUKCameraViewControllerCellIdentifier = @"cell";
     }
     if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone && UIScreen.mainScreen.nativeBounds.size.height == 2436)  {
         //iPhone X
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[topToolbarView(40.0)][cameraView][bottomToolbarView(100.0)]-12-|" options:kNilOptions metrics:nil views:views]];
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-18-[topToolbarView(40.0)][cameraView][bottomToolbarView(100.0)]-12-|" options:kNilOptions metrics:nil views:views]];
     }else{
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[topToolbarView(40.0)][cameraView][bottomToolbarView(100.0)]|" options:kNilOptions metrics:nil views:views]];
     }
