@@ -633,8 +633,14 @@ static NSString *const kBUKCameraViewControllerCellIdentifier = @"cell";
         @"margin": @15.0,
     };
     if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone && UIScreen.mainScreen.nativeBounds.size.height == 2436)  {
+        metrics = @{
+                    @"thumbnailHeight": @(self.thumbnailSize.height + 4.0),
+                    @"margin": @18.0,
+                    };
+    }
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone && UIScreen.mainScreen.nativeBounds.size.height == 2436)  {
         //iPhone X
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-12-[topToolbarView(40.0)][cameraView][bottomToolbarView(100.0)]-12-|" options:kNilOptions metrics:nil views:views]];
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-16-[topToolbarView(40.0)][cameraView][bottomToolbarView(100.0)]-12-|" options:kNilOptions metrics:nil views:views]];
     }else{
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[topToolbarView(40.0)][cameraView][bottomToolbarView(100.0)]|" options:kNilOptions metrics:nil views:views]];
     }
