@@ -290,6 +290,7 @@ static NSString *const kBUKCameraViewControllerCellIdentifier = @"cell";
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     [self.navigationController setToolbarHidden:YES animated:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
     [self updateDoneButton];
     [self updateSelectionInfo];
     
@@ -304,6 +305,7 @@ static NSString *const kBUKCameraViewControllerCellIdentifier = @"cell";
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
 }
 
 
