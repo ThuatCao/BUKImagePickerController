@@ -321,6 +321,7 @@ static NSString *const kBUKCameraViewControllerCellIdentifier = @"cell";
 
 
 - (void)done:(id)sender {
+    [(UIButton*)sender  setUserInteractionEnabled:NO];
     if ([self.delegate respondsToSelector:@selector(cameraViewController:didFinishCapturingImages:)]) {
         [self.delegate cameraViewController:self didFinishCapturingImages:self.capturedImages];
     } else {
