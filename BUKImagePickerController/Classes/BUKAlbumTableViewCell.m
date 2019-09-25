@@ -75,7 +75,7 @@
         [self.imageContainerView addSubview:self.frontImageView];
         [self.contentView addSubview:self.imageContainerView];
         [self.contentView addSubview:self.titleLabel];
-        
+        [self.contentView setBackgroundColor:[UIColor whiteColor]];
         [self setupViewConstraints];
     }
     return self;

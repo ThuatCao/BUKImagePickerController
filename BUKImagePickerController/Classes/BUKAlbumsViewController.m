@@ -66,6 +66,7 @@ static NSString *const kBUKAlbumsViewControllerCellIdentifier = @"albumCell";
     [self updateAssetsGroupsWithCompletion:^{
         [weakSelf.tableView reloadData];
     }];
+    [self.tableView setBackgroundColor:[UIColor whiteColor]];
 }
 
 
